@@ -12,13 +12,14 @@ import AOS from 'aos';
 const HeroContent = styled(Box)(({ theme }) => ({
     backgroundColor: '#f5f5f5',
     color: 'black',
-    textAlign: 'left', // Align text to the left
+    textAlign: 'left',
     width: '100%',
     minHeight: '60vh',
     display: 'flex',
-    justifyContent: 'space-between', // Space between text and image
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: theme.spacing(2, 0),
+    fontFamily: 'Poppins, sans-serif',  // Applying Poppins font
 }));
 
 const StyledCard = styled(Paper)(({ theme }) => ({
@@ -29,6 +30,7 @@ const StyledCard = styled(Paper)(({ theme }) => ({
     borderRadius: '15px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    fontFamily: 'Poppins, sans-serif',  // Applying Poppins font
     '&:hover': {
         transform: 'translateY(-10px)',
         boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
@@ -49,18 +51,19 @@ const Home = () => {
             <HeroContent>
                 <Container maxWidth="sm" data-aos="fade-up">
                     <Typography variant="h1" gutterBottom>
-                        Welcome to Wheel Factory
+                        Welcome to RimFolio
                     </Typography>
                     <Typography variant="h5">
                         Your one-stop solution for wheel remanufacturing.
                     </Typography>
                 </Container>
                 <Box component="img"
-                    src="src/assets/Screenshot 2024-08-15 at 2.10.53 PM.png" // Replace with the correct path to your image
+                    src="src/assets/Screenshot 2024-08-15 at 2.10.53 PM.png"
                     alt="Trucks"
                     sx={{
-                        maxHeight: '300px', // Adjust the height as needed
-                        marginLeft: 4,  // Space between text and image
+                        width: '45%',
+                        maxHeight: '250px',
+                        marginLeft: 4,
                         objectFit: 'contain',
                     }}
                     data-aos="fade-left" />

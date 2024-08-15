@@ -38,10 +38,10 @@ const Navbar = () => {
                         fontSize: '1.25rem',
                         fontFamily: 'Roboto, sans-serif'  // Consistent font application
                     }}>
-                        Wheel Factory
+                        RimFolio
                     </Typography>
                     <NavbarContainer>
-                        <StyledLink to="/">Home</StyledLink>
+
                         <StyledLink to="/login">Login</StyledLink>
                         <StyledLink to="/register">Register</StyledLink>
                         <StyledLink to="/orders">Orders</StyledLink>
