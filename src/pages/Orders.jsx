@@ -17,6 +17,10 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { styled } from '@mui/material/styles';
 
+const fetchOrderUrl = import.meta.env.VITE_APP_USER_ORDER;
+const validateUserUrl = import.meta.env.VITE_APP_USER_VALIDATE;
+
+
 const CustomTypography = styled(Typography)({
     color: 'black',
 });
@@ -87,7 +91,7 @@ const Orders = () => {
         if (role === 'Manager') {
             const fetchOrders = async () => {
                 try {
-                    const response = await axios.get('http://localhost:5203/api/orders', {
+                    const response = await axios.get(fetchOrderUrl, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     setOrders(response.data);
@@ -137,7 +141,7 @@ const Orders = () => {
         if (editingOrder) {
             // Update order
             try {
-                await axios.put(`http://localhost:5203/api/orders/${editingOrder.orderId}`, orderData, {
+                await axios.put(`${fetchOrderUrl}/${editingOrder.orderId}`, orderData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setOrders(orders.map(order => (order.orderId === editingOrder.orderId ? orderData : order)));
@@ -154,7 +158,7 @@ const Orders = () => {
 
                 console.log('Order Data:', orderData); // Log the order data
 
-                await axios.post('http://localhost:5203/api/orders', orderData, {
+                await axios.post(fetchOrderUrl, orderData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setOrders([...orders, orderData]);
@@ -181,7 +185,7 @@ const Orders = () => {
                 alert('Only Managers can delete orders');
                 return;
             }
-            await axios.delete(`http://localhost:5203/api/orders/${orderId}`, {
+            await axios.delete(`${fetchOrderUrl}/${orderId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setOrders(orders.filter(order => order.orderId !== orderId));

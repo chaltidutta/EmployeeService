@@ -9,6 +9,9 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
 
+const validateUserUrl = import.meta.env.VITE_APP_USER_VALIDATE;
+
+
 const GradientBackground = styled(Box)(({ theme }) => ({
     background: 'linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%)', // Soft grey gradient
     minHeight: '100vh',
@@ -62,6 +65,8 @@ const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const Login = () => {
+
+
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -75,7 +80,9 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5203/api/user/validate', {
+            console.log(validateUserUrl); // Log the URL to ensure it's correct
+
+            const response = await axios.post(validateUserUrl, {
                 username: formData.username,
                 password: formData.password,
             });

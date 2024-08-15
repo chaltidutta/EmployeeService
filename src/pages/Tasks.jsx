@@ -17,6 +17,15 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { styled } from '@mui/material/styles';
 
+// Accessing environment variables
+const getRoleAndUsernameUrl = import.meta.env.VITE_APP_GET_ROLE_AND_USERNAME;
+const getAllTasksUrl = import.meta.env.VITE_APP_GET_ALL_TASKS;
+const solderingSandblastingUrl = import.meta.env.VITE_APP_SOLDERING_SANDBLASTING;
+const paintingUrl = import.meta.env.VITE_APP_PAINTING;
+const packagingUrl = import.meta.env.VITE_APP_PACKAGING;
+const deleteTaskUrl = import.meta.env.VITE_APP_DELETE_TASK;
+const getOrderUrl = import.meta.env.VITE_APP_GET_ORDER;
+
 const CustomTypography = styled(Typography)({
     color: 'black',
 });
@@ -75,7 +84,7 @@ const Tasks = () => {
         // Fetch user role and username
         const fetchRoleAndUsername = async () => {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5203/api/Tasks/GetRoleAndUsername', {
+            const response = await axios.get(getRoleAndUsernameUrl, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUserRole(response.data[0]);
@@ -90,7 +99,7 @@ const Tasks = () => {
             // Fetch all tasks if user is a manager
             const fetchTasks = async () => {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5203/api/Tasks/AllStatus', {
+                const response = await axios.get(getAllTasksUrl, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setTasks(response.data);
@@ -131,13 +140,13 @@ const Tasks = () => {
         let data = {};
 
         if (taskType === 'SolderingSandblasting') {
-            url = `http://localhost:5203/api/Tasks/SolderingSandblasting?orderId=${taskData.orderId}`;
+            url = `${solderingSandblastingUrl}?orderId=${taskData.orderId}`;
             data = { level: taskData.level, note: taskData.note };
         } else if (taskType === 'Painting') {
-            url = `http://localhost:5203/api/Tasks/Painting?orderId=${taskData.orderId}`;
+            url = `${paintingUrl}?orderId=${taskData.orderId}`;
             data = { color: taskData.color, type: taskData.type, note: taskData.note };
         } else if (taskType === 'Packaging') {
-            url = `http://localhost:5203/api/Tasks/Packaging?orderId=${taskData.orderId}`;
+            url = `${packagingUrl}?orderId=${taskData.orderId}`;
             data = { inspectionRating: taskData.inspectionRating, note: taskData.note, ImagePath: taskData.imagePath };
         }
 
@@ -156,7 +165,7 @@ const Tasks = () => {
     const handleDelete = async (orderId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:5203/api/Tasks/DeleteTask/${orderId}`, {
+            await axios.delete(`${deleteTaskUrl}/${orderId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTasks(tasks.filter(task => task.orderId !== orderId));
@@ -172,7 +181,7 @@ const Tasks = () => {
     const handleTaskClick = async (orderId) => {
         const token = localStorage.getItem('token');
         try {
-            const response = await axios.get(`http://localhost:5203/api/Orders/${orderId}`, {
+            const response = await axios.get(`${getOrderUrl}${orderId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setTaskData(response.data);

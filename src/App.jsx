@@ -6,11 +6,13 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Orders from './pages/Orders';
 import Tasks from './pages/Tasks';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+
+
   return (
     <div className="App">
       <Navbar />

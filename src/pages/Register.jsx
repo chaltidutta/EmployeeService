@@ -10,6 +10,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
 
+const registerUserUrl = import.meta.env.VITE_APP_REGISTER_USER;
+
 const GradientBackground = styled(Box)(({ theme }) => ({
     background: 'linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%)', // Soft grey gradient
     minHeight: '100vh',
@@ -86,7 +88,8 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5203/api/user/', {
+            console.log(registerUserUrl)
+            const response = await axios.post(registerUserUrl, {
                 username: formData.username,
                 passwordHash: formData.password,
                 role: formData.role,
