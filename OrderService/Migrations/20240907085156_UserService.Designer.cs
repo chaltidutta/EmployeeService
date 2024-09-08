@@ -12,8 +12,8 @@ using OrderService.Models;
 namespace OrderService.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20240731170420_newneww")]
-    partial class newneww
+    [Migration("20240907085156_UserService")]
+    partial class UserService
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

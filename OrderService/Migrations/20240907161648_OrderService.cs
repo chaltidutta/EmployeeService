@@ -5,7 +5,7 @@
 namespace OrderService.Migrations
 {
     /// <inheritdoc />
-    public partial class newneww : Migration
+    public partial class OrderService : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
