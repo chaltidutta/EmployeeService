@@ -13,26 +13,58 @@ const validateUserUrl = import.meta.env.VITE_APP_USER_VALIDATE;
 
 
 const GradientBackground = styled(Box)(({ theme }) => ({
-    background: 'linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%)', // Soft grey gradient
-    minHeight: '100vh',
+    background: 'linear-gradient(135deg, #12345 0%, #f5f5f5 100%)', // Soft grey gradient
+    minHeight: '80vh',
+    paddingBottom: '20px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
 }));
 
-const GlassmorphismContainer = styled(Box)(({ theme }) => ({
+/*const GlassmorphismContainer = styled(Box)(({ theme }) => ({
     padding: theme.spacing(6),
     borderRadius: '20px',
-    background: 'rgba(255, 255, 255, 0.1)',
+    background: '#123',
     boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.3)',
     textAlign: 'center',
+}));*/
+
+const GlassmorphismContainer = styled(Box)(({ theme }) => ({
+    padding: theme.spacing(6),
+    paddingTop: '20px',
+    borderRadius: '20px',
+    background: '#123',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    textAlign: 'center',
+    position: 'relative', // Make it positionable
+    transition: 'all 0.5s ease', // Smooth transition for size and positioning
+    zIndex: 1, // Ensure the box stays on top
+    '&:hover': {
+        position: 'absolute', // Position absolutely when hovered
+        top: 0,
+        left: 0,
+        width: '100vw', // Expand to full width of the viewport
+        height: '60vh', // Expand to full height of the viewport
+        borderRadius: '0', // Remove border-radius to cover the page
+        transform: 'none', // Reset any scaling
+        //zIndex: 9999, // Ensure it stays above other elements
+        boxShadow: '0 8px 40px rgba(0, 0, 0, 0.2)', // Enhance shadow
+    },
 }));
+
+
+
+
+
+
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiInputBase-input': {
-        color: 'black',
+        color: 'white',
     },
     '& .MuiInputLabel-root': {
         color: 'rgba(0, 0, 0, 0.6)',
@@ -42,10 +74,10 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
             borderColor: 'rgba(0, 0, 0, 0.3)',
         },
         '&:hover fieldset': {
-            borderColor: 'black',
+            borderColor: 'white',
         },
         '&.Mui-focused fieldset': {
-            borderColor: 'black',
+            borderColor: 'white',
         },
     },
 }));
@@ -54,13 +86,13 @@ const CustomButton = styled(Button)(({ theme }) => ({
     marginTop: theme.spacing(3),
     padding: theme.spacing(1.5),
     borderRadius: '50px',
-    background: 'linear-gradient(135deg, #616161, #9e9e9e)',  // Grey gradient button
+    background: 'linear-gradient(135deg, #456, #9e9e9e)',  // Grey gradient button
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: '1px',
     '&:hover': {
-        background: 'linear-gradient(135deg, #9e9e9e, #616161)',  // Inverted gradient on hover
+        background: 'linear-gradient(135deg, #9e9e9e, #456)',  // Inverted gradient on hover
     },
 }));
 
@@ -99,8 +131,8 @@ const Login = () => {
         <GradientBackground>
             <Container component="main" maxWidth="xs">
                 <GlassmorphismContainer>
-                    <Typography component="h1" variant="h4" sx={{ color: 'black', fontWeight: 'bold', mb: 2 }}>
-                        RimFolio
+                    <Typography component="h1" variant="h4" sx={{ color: 'white', fontWeight: 'bold', mb: 2 }}>
+                        Task Manager
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
@@ -110,7 +142,7 @@ const Login = () => {
                                     required
                                     fullWidth
                                     id="username"
-                                    label="Username"
+                                    label="EmployeeId"
                                     name="username"
                                     autoComplete="username"
                                     value={formData.username}

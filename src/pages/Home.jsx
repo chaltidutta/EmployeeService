@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+/*import React, { useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -7,12 +7,14 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+//import /App.css;
 
 
 const HeroContent = styled(Box)(({ theme }) => ({
-    backgroundColor: '#f5f5f5',
-    color: 'black',
-    textAlign: 'left',
+    backgroundColor: '#123456',
+
+    color: 'white',
+    textAlign: 'center',
     width: '100%',
     minHeight: '60vh',
     display: 'flex',
@@ -24,7 +26,7 @@ const HeroContent = styled(Box)(({ theme }) => ({
 
 const StyledCard = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(4),
-    textAlign: 'center',
+    textAlign: 'top',
     backgroundColor: '#ffffff',
     color: 'black',
     borderRadius: '15px',
@@ -47,63 +49,145 @@ const Home = () => {
     }, []);
 
     return (
-        <Box sx={{ width: '100%', pt: '64px' }}>
-            <HeroContent>
-                <Container maxWidth="sm" data-aos="fade-up">
+        <Box sx={{ width: '100%', pt: '7px' }}>
+            <HeroContent
+                style={{
+                    backgroundImage: 'url(/src/assets/background.jpg)', // Path to your image
+                    
+                    backgroundSize: 'cover', // Cover the entire container
+                    backgroundPosition: 'center', // Center the image
+                    backgroundRepeat: 'no-repeat', // Prevent repeating
+                    height: '75vh', // Full viewport height
+                    margin: 0, // Remove default margin
+                    //border: '20px solid #123', // Set the border
+                }}>
+                <Container
+                    maxWidth="sm"
+                    data-aos="fade-up"
+                    className="containerZoomEffect"
+                    style={{
+                        backgroundColor: '#123',
+                        padding: '15px',
+                        paddingTop: '22px',
+                    }} // Replace with your desired color
+                >
                     <Typography variant="h1" gutterBottom>
-                        Welcome to RimFolio
-                    </Typography>
-                    <Typography variant="h5">
-                        Your one-stop solution for wheel remanufacturing.
+                        Utilize Your Task
+                        <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
                     </Typography>
                 </Container>
-                <Box component="img"
-                    src="src/assets/Screenshot 2024-08-15 at 2.10.53 PM.png"
-                    alt="Trucks"
-                    sx={{
-                        width: '45%',
-                        maxHeight: '250px',
-                        marginLeft: 4,
-                        objectFit: 'contain',
-                    }}
-                    data-aos="fade-left" />
+                
             </HeroContent>
-            <Container maxWidth="md" sx={{ mb: 8 }}>
-                <Grid container spacing={4} justifyContent="center">
-                    <Grid item xs={12} sm={6} md={4} data-aos="fade-right">
-                        <StyledCard>
-                            <Typography variant="h5" component="h2">
-                                High Quality
-                            </Typography>
-                            <Typography>
-                                We provide top-notch remanufacturing services ensuring high quality.
-                            </Typography>
-                        </StyledCard>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4} data-aos="fade-up">
-                        <StyledCard>
-                            <Typography variant="h5" component="h2">
-                                Expert Team
-                            </Typography>
-                            <Typography>
-                                Our team consists of industry experts with years of experience.
-                            </Typography>
-                        </StyledCard>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4} data-aos="fade-left">
-                        <StyledCard>
-                            <Typography variant="h5" component="h2">
-                                Customer Support
-                            </Typography>
-                            <Typography>
-                                We offer 24/7 customer support to assist you with any queries.
-                            </Typography>
-                        </StyledCard>
-                    </Grid>
-                </Grid>
-            </Container>
+            
+        </Box>
+    );
+};
+
+export default Home;*/
+
+
+import React, { useEffect } from 'react';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+
+// Styling for the outer hero section
+const HeroContent = styled(Box)(({ theme }) => ({
+    backgroundColor: '#123456',
+    color: 'white',
+    textAlign: 'center',
+    width: '100%',
+    minHeight: '60vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: theme.spacing(2, 0),
+    fontFamily: 'Poppins, sans-serif',  // Applying Poppins font
+    overflow: 'hidden', // Ensure content doesn't overflow
+}));
+
+// Styling for the inner box with the neon border effect
+const NeonBorderContainer = styled(Container)(({ theme }) => ({
+    position: 'relative',
+    padding: '15px',
+    backgroundColor: '#123',
+    paddingTop: '22px',
+    zIndex: 1, // Ensure the neon border stays on top of background elements
+    '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        border: '4px solid transparent',
+        boxSizing: 'border-box',
+        zIndex: 2,
+        animation: 'neon-border 2s linear infinite',
+    },
+    '@keyframes neon-border': {
+        '0%': {
+            borderTop: '4px solid #00FFFF', // Neon cyan
+            borderLeft: '4px solid transparent',
+            borderRight: '4px solid transparent',
+            borderBottom: '4px solid transparent',
+        },
+        
+        
+        '75%': {
+            borderTop: '4px solid transparent',
+            borderLeft: '4px solid transparent',
+            borderRight: '4px solid transparent',
+            borderBottom: '4px solid #00FFFF',
+        },
+        '100%': {
+            borderTop: '4px solid #00FFFF',
+            borderLeft: '4px solid transparent',
+            borderRight: '4px solid transparent',
+            borderBottom: '4px solid transparent',
+        },
+    },
+}));
+
+// Main component with the neon border effect
+const Home = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 2000,
+            once: true,
+        });
+    }, []);
+
+    return (
+        <Box sx={{ width: '100%', pt: '7px' }}>
+            <HeroContent
+                style={{
+                    backgroundImage: 'url(/src/assets/background.jpg)', // Path to your image
+                    backgroundSize: 'cover', // Cover the entire container
+                    backgroundPosition: 'center', // Center the image
+                    backgroundRepeat: 'no-repeat', // Prevent repeating
+                    height: '75vh', // Full viewport height
+                    margin: 0, // Remove default margin
+                }}
+            >
+                <NeonBorderContainer
+                    maxWidth="sm"
+                    data-aos="fade-up"
+                >
+                    <Typography variant="h1" gutterBottom sx={{ color: 'white' }}>
+                        Manage Your Task
+                    </Typography>
+                </NeonBorderContainer>
+            </HeroContent>
         </Box>
     );
 };
 
 export default Home;
+

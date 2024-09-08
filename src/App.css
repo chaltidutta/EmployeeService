@@ -35,3 +35,13 @@
 .navbar .link:hover {
     color: red;
 }
+
+.containerZoomEffect {
+    transition: transform 0.3s ease; /* Smooth transition effect */
+    border-radius: 8px; /* Replace with your desired border-radius */
+    overflow: hidden; /* Ensure content does not overflow the rounded corners */
+}
+
+    .containerZoomEffect:hover {
+        transform: scale(0.95); /* Zoom out effect: scales down to 95% of the original size */
+    }

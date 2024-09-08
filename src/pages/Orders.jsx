@@ -197,9 +197,9 @@ const Orders = () => {
     return (
         <Container component="main" maxWidth="md">
             <CustomTypography variant="h4" component="h1" gutterBottom>
-                Here are the Orders
+                Here are the Tasks
             </CustomTypography>
-            {userRole === 'InventoryWorker' && (
+            {userRole === 'Employee' && (
                 <Button variant="contained" color="primary" onClick={handleOpenModal}>
                     Add Order
                 </Button>

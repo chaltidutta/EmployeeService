@@ -17,7 +17,10 @@ const Footer = () => {
     return (
         <FooterContainer>
             <Typography variant="body2">
-                © 2024 Wheel Factory. All rights reserved.
+                © 2024 Task Manager. All rights reserved.
+            </Typography>
+            <Typography variant="body2">
+                Created by Upama Dutta.
             </Typography>
         </FooterContainer>
     );

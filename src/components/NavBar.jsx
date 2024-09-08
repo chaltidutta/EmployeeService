@@ -22,7 +22,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 
 const NavbarContainer = styled('div')(({ theme }) => ({
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'right',
     flexGrow: 1,
     fontFamily: 'Roboto, sans-serif',  // Ensuring consistent font application
 }));
@@ -30,22 +30,36 @@ const NavbarContainer = styled('div')(({ theme }) => ({
 const Navbar = () => {
     return (
         <React.Fragment>
-            <AppBar position="fixed" sx={{ backgroundColor: '#f5f5f5', boxShadow: 'none' }}>
+            <AppBar position="fixed" sx={{ backgroundColor: '#123', boxShadow: 'none' }}>
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
                     <Typography variant="h6" component={Link} to="/" sx={{
-                        color: 'black',
+                        color: 'white',
                         textDecoration: 'none',
                         fontSize: '1.25rem',
                         fontFamily: 'Roboto, sans-serif'  // Consistent font application
                     }}>
-                        RimFolio
+                        Task Manager
                     </Typography>
                     <NavbarContainer>
 
-                        <StyledLink to="/login">Login</StyledLink>
-                        <StyledLink to="/register">Register</StyledLink>
-                        <StyledLink to="/orders">Orders</StyledLink>
-                        <StyledLink to="/tasks">Tasks</StyledLink>
+                        <StyledLink to="/login" style={{
+                            backgroundColor: '#fff',
+                            padding: '7px',
+                            borderRadius: '8px',
+                            overflow: 'hidden',
+                        }}>Login</StyledLink>
+                        <StyledLink to="/orders" style={{
+                            backgroundColor: '#fff',
+                            padding: '7px',
+                            borderRadius: '8px',
+                            overflow: 'hidden',
+                        }}>Assign Task</StyledLink>
+                        <StyledLink to="/tasks" style={{
+                            backgroundColor: '#fff',
+                            padding: '7px',
+                            borderRadius: '8px',
+                            overflow: 'hidden',
+                        }}>Complete Task</StyledLink>
                     </NavbarContainer>
                 </Toolbar>
             </AppBar>
